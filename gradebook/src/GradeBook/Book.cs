@@ -16,7 +16,7 @@ namespace  GradeBook
             grades.Add(grade);
         }
 
-        public Statistics GetStatisctics()
+        public Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = 0.0;
