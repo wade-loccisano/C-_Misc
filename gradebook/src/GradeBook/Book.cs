@@ -35,6 +35,6 @@ namespace  GradeBook
         }
 
         List<double> grades;
-        public string Name { get; private set; }
+        public string Name;
     }
 }
