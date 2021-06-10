@@ -5,13 +5,44 @@ namespace  GradeBook
 {
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-    public class Book
+    public class NamedObject
     {
-        public Book(string name) 
+        public NamedObject(string name)
+        {
+            Name = name;
+        }
+
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+
+    public class DiskBook : Book
+    {
+        public DiskBook(string name) : base(name)
+        {
+        }
+    }
+
+    public interface IBook
+        {
+            void AddGrade(double grade);
+            Statistics GetStatistics();
+            string Name { get; }
+            event GradeAddedDelegate GradeAdded;
+        }
+
+    public class Book : NamedObject
+    {
+        public Book(string name) : base(name)
         {
             grades = new List<double>();
             Name = name;
         }
+
+        
 
         public void AddGrade(char c)
         {
@@ -103,11 +134,6 @@ namespace  GradeBook
         }
 
         List<double> grades;
-
-        public string Name
-        {
-            get; set;
-        }
 
         public const string CATEGORY = "Science";
     }
